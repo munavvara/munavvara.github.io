@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"> <head>
+<meta charset="utf-8">
+<title>{{ site.name }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="{{ site.description }}">
+<link href="/css/bootstrap.css" rel="stylesheet"> 
+    <!-- Custom styles for this template -->
+<link href="/css/dashboard.css" rel="stylesheet">
+<style>
+body {
+padding-top: 60px;
+}
+</style>
+<link href="/css/bootstrap-theme.css" rel="stylesheet">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></sc\
+ript>
+    <![endif]-->
+    
+ <style type="text/css">
+.highlight {
+    background-color: #fff34d;
+    -moz-border-radius: 5px; /* FF1+ */
+    -webkit-border-radius: 5px; /* Saf3-4 */
+    border-radius: 5px; /* Opera 10.5, IE 9, Saf5, Chrome */
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); /* FF3.5+ */
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); /* Saf3.0+, Chrome */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); /* Opera 10.5+, IE 9.0 */
+}
+
+.highlight {
+    padding:1px 4px;
+    margin:0 -4px;
+}
+</style>   
+<!--
+		<script>
+		(function (w, doc,co) {
+			// http://stackoverflow.com/questions/901115/get-query-string-values-in-javascript
+			var u = {},
+				e,
+				a = /\+/g,  // Regex for replacing addition symbol with a space
+				r = /([^&=]+)=?([^&]*)/g,
+				d = function (s) { return decodeURIComponent(s.replace(a, " ")); },
+				q = w.location.search.substring(1),
+				v = '2.0.3';
+
+			while (e = r.exec(q)) {
+				u[d(e[1])] = d(e[2]);
+			}
+			
+			if (!!u.jquery) {
+				v = u.jquery;
+			}	
+
+			doc.write('<script src="http://ajax.googleapis.com/ajax/libs/jquery/'+v+'/jquery.min.js">' + "<" + '/' + 'script>');
+			co.log('\nLoading jQuery v' + v + '\n');
+		})(window, document, console);
+		</script>
+       --> 
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Munavvara</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/contact_us">Contact Us</a></li>
+            <li><a href="/help">FAQ</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" id="text-search" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>  
+    </div>    
+
+    <div class="container-fluid">

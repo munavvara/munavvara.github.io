@@ -1,0 +1,29 @@
+          {% assign current = page.url | downcase | split: '/' %}
+          <ul class="nav nav-sidebar">
+            <li><a><h4 class="sub-header">About</h4></a></li>
+            <li {% if current[1] == 'school' or current[1] == null %}class='active' {% endif %}><a href="/school">Munavvara School</a></li>
+            <li {% if current[1] == 'teachers' %}class='active' {% endif %}><a href="/teachers">Administration</a></li>
+            <li {% if current[1] == 'students' %}class='active' {% endif %}><a href="/students">Our Students</a></li>
+            <li {% if current[1] == 'education' %}class='active' {% endif %}><a href="/education">Education System</a></li>
+            <li {% if current[1] == 'library' %}class='active' {% endif %}><a href="/library">Library</a></li>
+            <li {% if current[1] == 'computer' %}class='active' {% endif %}><a href="/computer">Computer Lab</a></li>
+            <li {% if current[1] == 'study' %}class='active' {% endif %}><a href="/study">Studying Facilities</a></li>
+            <li {% if current[1] == 'kids' %}class='active' {% endif %}><a href="/kids">Younger Children</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a><h4 class="sub-header">Downloads</h4></a></li>
+            <li {% if current[1] == 'downloads' %}class='active' {% endif %}><a href="/downloads">Materails to Download</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a><h4 class="sub-header">Timetables</h4></a></li>
+            <li {% if current[1] == 'grade01' %}class='active' {% endif %}><a href="/grade01">Sunday</a></li>
+            <li {% if current[1] == 'grade02' %}class='active' {% endif %}><a href="/grade02">Monday</a></li>
+            <li {% if current[1] == 'grade03' %}class='active' {% endif %}><a href="/grade03">Tuesday</a></li>
+            <li {% if current[1] == 'grade04' %}class='active' {% endif %}><a href="/grade04">Wednesday</a></li>
+            <li {% if current[1] == 'grade05' %}class='active' {% endif %}><a href="/grade05">Thursday</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a><h4 class="sub-header">Miscellaneous</h4></a></li>
+            <li {% if current[1] == 'maroshi' %}class='active' {% endif %}><a href="/maroshi">Maroshi Island</a></li>
+            <li {% if current[1] == 'island' %}class='active' {% endif %}><a href="/island">Other Educational Facilities</a></li>
+          </ul>

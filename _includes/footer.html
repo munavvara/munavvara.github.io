@@ -1,0 +1,143 @@
+</div>
+
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/highlight.js"></script>
+<script type="text/javascript" src="/js/jquery.quicksearch.min.js"></script>
+    <script type="text/javascript" src="/js/jspdf.js"></script>
+    <script type="text/javascript" src="/js/jspdf.plugin.from_html.js"></script>
+    <script type="text/javascript" src="/js/jspdf.plugin.split_text_to_size.js"></script>
+    <script type="text/javascript" src="/js/jspdf.plugin.standard_fonts_metrics.js"></script>
+    <script type="text/javascript" src="/js/jspdf.plugin.cell.js"></script>
+    <script type="text/javascript" src="/js/FileSaver.js"></script>
+    <script type="text/javascript" src="/js/adler32cs.js"></script>
+    <script type="text/javascript" src="/js/deflate.js"></script>
+    <script type="text/javascript" src="/js/Blob.js"></script>
+    <script type="text/javascript" src="/js/BlobBuilder.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(function() {
+    $('input#id_search').quicksearch('table#report_table tbody tr');
+    $('#text-search').bind('keyup change', function(ev) {
+        // pull in the new value
+        var searchTerm = $(this).val();
+
+        // remove any old highlighted terms
+        $('body').removeHighlight();
+
+        // disable highlighting if empty
+        if ( searchTerm ) {
+            // highlight the new term
+            $('body').highlight( searchTerm );
+        }
+    });
+});
+</script>
+<script type="text/javascript">
+$("#exportpdf").click(function() {
+
+var pdf = new jsPDF('p', 'pt', 'letter');
+source = $('#htmlexportPDF')[0];
+               specialElementHandlers = {
+                    '#bypassme' : function(element, renderer) {
+                        return true
+                    }
+                };
+                margins = {
+                    top : 80,
+                    bottom : 60,
+                    left : 60,
+                    width : 522
+                };
+pdf.fromHTML(source, // HTML string or DOM elem ref.
+                margins.left, // x coord
+                margins.top, { // y coord
+                    'width' : margins.width, // max width of content on PDF
+                    'elementHandlers' : specialElementHandlers
+                },
+
+                function(dispose) {
+                    pdf.save('fileNameOfGeneretedPdf.pdf');
+                }, margins);
+});
+
+            function htmltopdf() {
+                
+                var pdf = new jsPDF('p', 'pt', 'letter');
+                pdf.printingHeaderRow = true;
+                pdf.tableHeaderRow = true;
+                pdf.printHeaders = true;
+                var elementHandler = {
+  '#ignorePDF': function (element, renderer) {
+    return true;
+  }
+};
+
+
+                var table = tableToJson($('#report_table').get(0));
+                        pdf.cellInitialize();
+        $.each(table, function (i, row){
+            console.debug(row);
+            $.each(row, function (j, cell){            
+            if (i == 0) {
+                pdf.margins = 1;
+                pdf.setFont("helvetica");
+                pdf.setFontType("bold");
+                pdf.setFontSize(12);
+                pdf.setFillColor(1);
+
+                pdf.cell(10, 50,190, 12, cell, i);
+            }else{
+                pdf.margins = 1;
+                pdf.setFont("helvetica");
+                pdf.setFontType("italic");
+                pdf.setFontSize(10);
+                pdf.setFillColor(1);
+                
+                if (j=="c"){
+                    pdf.cell(10, 50,18, 12, cell, i);
+                }else{
+                    pdf.cell(10, 50,60, 12, cell, i);
+                }
+            }            
+                })
+            })
+                                
+            pdf.save('Download.pdf'); //Filename
+        }
+
+            
+                function tableToJson(table) {
+    var data = [];
+
+    // first row needs to be headers
+    var headers = [];
+    
+    for (var i=0; i<table.rows[1].cells.length; i++) {
+        headers[i] = table.rows[1].cells[i].innerHTML.toLowerCase().replace(/ /gi,'');
+    }
+
+
+    // go through cells
+    for (var i=0; i<table.rows.length; i++) {
+
+
+        var tableRow = table.rows[i];
+        var rowData = {};
+
+        for (var j=0; j<tableRow.cells.length; j++) {
+
+            rowData[ headers[j] ] = tableRow.cells[j].innerHTML;
+            
+
+        }
+        if (tableRow.style.display!="none"){
+            data.push(rowData);
+        }
+    }       
+
+    return data;
+}
+
+        </script>
+  </body>
+</html>
